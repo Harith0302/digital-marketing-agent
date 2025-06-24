@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Digital Marketing Handler</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; }
+    input[type="text"], button { width: 100%; padding: 10px; margin-top: 10px; }
+    .post { background: #f4f4f4; margin-top: 20px; padding: 15px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>📢 Digital Marketing Post Generator</h1>
+  <form method="POST" action="/generate-posts">
+    <input type="text" name="goal" placeholder="Enter your campaign goal" required />
+    <button type="submit">Generate Posts</button>
+  </form>
+
+  {% if results %}
+    <h2>Generated Posts for: "{{ goal }}"</h2>
+    {% for platform, content in results.items() %}
+      <div class="post">
+        <h3>{{ platform }}</h3>
+        <p>{{ content }}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>
